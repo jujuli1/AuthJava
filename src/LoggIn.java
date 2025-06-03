@@ -9,6 +9,7 @@ import org.mindrot.jbcrypt.BCrypt;
 public class LoggIn extends JFrame {
 
     Users users = new Users();
+    
 
     public LoggIn() {
 
@@ -69,6 +70,8 @@ public class LoggIn extends JFrame {
                         "Vous voila connecté avec success ",
                         "Connecté !",
                         JOptionPane.INFORMATION_MESSAGE);
+                        pageConnectee page = new pageConnectee();
+                        page.setVisible(true);
 
             } else {
                 JOptionPane.showMessageDialog(this,
@@ -80,6 +83,7 @@ public class LoggIn extends JFrame {
         });
 
         setVisible(true);// Affiche la fenetre a l'écran /!\
+        
     }
 
     // démarrage application en appelant l'instance main

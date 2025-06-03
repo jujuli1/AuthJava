@@ -46,22 +46,58 @@ public class SignIn extends JFrame {
         validated.setBounds(100, 150, 150, 30);
         add(validated);
 
-        // ecouteur bouton valider
+        // convertion du mot de passe haché pour comparaison avec > 8
+       
+
+        //condition de validation
+        
+
+            // ecouteur bouton valider
         validated.addActionListener(e -> {
             String name = nomField.getText(); // prend texte nom
             String imail = emailField.getText();// prend texte mail
             String password = new String(passField.getPassword());// prend texte password
             String hachoir = BCrypt.hashpw(password, BCrypt.gensalt()); // hash du mot de passe
 
+            // convertion du mot de passe haché pour comparaison avec > 8
+        char[] passChars = passField.getPassword();
+
+        //condition de validation
+        if(nom != null && email != null && pass != null && nomField.getText().length() >= 8 && emailField.getText().length() >= 8 && passChars.length >= 8){
+
+
             users.RecupInsert(name, imail, hachoir);
+
+
+            LoggIn login = new LoggIn();
+                        login.setVisible(true);
 
             // message de validation
             JOptionPane.showMessageDialog(this,
                     "Nom : " + nom + "\nEmail : " + email + "\n Hachoir : " + hachoir,
                     "Informations saisies",
                     JOptionPane.INFORMATION_MESSAGE);
+                    
 
-        });
+        }else {
+
+            JOptionPane.showMessageDialog(this,
+            "probleme d'authentification. Minimum 8 characteres \n\n" +
+                    "Nom : " + nom + "\nEmail : " + email + "\n pass : " + pass,
+                    "Informations saisies",
+                    JOptionPane.INFORMATION_MESSAGE);
+
+            System.out.println("probleme d'authentification. \n\n");
+        }
+    });
+
+       
+       
+
+        
+
+        //Eviter de garder le pass en clair
+        //Arrays.fill(passChars, ' ');
 
         setVisible(true);// Affiche la fenetre a l'écran /!\
 
