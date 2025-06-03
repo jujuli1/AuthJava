@@ -1,6 +1,8 @@
 import java.util.Scanner;
 import org.mindrot.jbcrypt.BCrypt;
 import javax.swing.*;
+import java.util.Arrays;
+
 
 public class SignIn extends JFrame {
 
@@ -60,7 +62,8 @@ public class SignIn extends JFrame {
             String hachoir = BCrypt.hashpw(password, BCrypt.gensalt()); // hash du mot de passe
 
             // convertion du mot de passe haché pour comparaison avec > 8
-        char[] passChars = passField.getPassword();
+            char[] passChars = passField.getPassword();
+        
 
         //condition de validation
         if(nom != null && email != null && pass != null && nomField.getText().length() >= 8 && emailField.getText().length() >= 8 && passChars.length >= 8){
@@ -74,21 +77,29 @@ public class SignIn extends JFrame {
 
             // message de validation
             JOptionPane.showMessageDialog(this,
+            "Compte créer avec succes ! \n\n\n" +
                     "Nom : " + nom + "\nEmail : " + email + "\n Hachoir : " + hachoir,
                     "Informations saisies",
                     JOptionPane.INFORMATION_MESSAGE);
+
+                    //Eviter de garder le pass en clair /1
+       Arrays.fill(passChars, ' ');
                     
 
         }else {
 
             JOptionPane.showMessageDialog(this,
-            "probleme d'authentification. Minimum 8 characteres \n\n" +
+            "Probleme d'authentification. Minimum 8 characteres \n\n\n" +
                     "Nom : " + nom + "\nEmail : " + email + "\n pass : " + pass,
                     "Informations saisies",
                     JOptionPane.INFORMATION_MESSAGE);
 
             System.out.println("probleme d'authentification. \n\n");
+
+              //Eviter de garder le pass en clair /2
+                Arrays.fill(passChars, ' ');
         }
+        
     });
 
        
@@ -96,8 +107,7 @@ public class SignIn extends JFrame {
 
         
 
-        //Eviter de garder le pass en clair
-        //Arrays.fill(passChars, ' ');
+        
 
         setVisible(true);// Affiche la fenetre a l'écran /!\
 
