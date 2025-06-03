@@ -16,8 +16,12 @@ javac -cp "lib/*" src/*.java -d bin
 
 
 Execute:
+Main
+java -cp "bin;lib/mysql-connector-j-9.3.0.jar;lib/jbcrypt-0.4.jar" Main
 
-Users
+
+
+Users (inutile)
 java -cp "bin;lib/mysql-connector-j-9.3.0.jar;lib/jbcrypt-0.4.jar" Users
 
 
