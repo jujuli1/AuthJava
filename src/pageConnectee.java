@@ -2,6 +2,7 @@ import javax.swing.JFrame;
 import javax.swing.JButton;
 
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 
 public class pageConnectee extends JFrame{
 
@@ -27,6 +28,7 @@ public class pageConnectee extends JFrame{
         JLabel nom = new JLabel("Vous etes connectée ! Bravo !");
 
         setVisible(true);// Affiche la fenetre a l'écran /!\
+       
     }
 
      // démarrage application en appelant l'instance main

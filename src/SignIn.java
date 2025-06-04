@@ -1,4 +1,6 @@
 import java.util.Scanner;
+import java.util.regex.Pattern;
+
 import org.mindrot.jbcrypt.BCrypt;
 import javax.swing.*;
 import java.util.Arrays;
@@ -63,15 +65,32 @@ public class SignIn extends JFrame {
 
             // convertion du mot de passe haché pour comparaison avec > 8
             char[] passChars = passField.getPassword();
+
+            //Convertion char[] en string avant validation
+            String psswd = new String(passChars);
+
+            String regex = "^(?=.*[A-Z])(?=.*\\d)(?=.*[^A-Za-z0-9]).{8,}$";
+
+            //Verif match entre regex et psswd
+            Boolean validPass = Pattern.matches(regex, psswd);
+
+            
+    
         
 
         //condition de validation
-        if(nom != null && email != null && pass != null && nomField.getText().length() >= 8 && emailField.getText().length() >= 8 && passChars.length >= 8){
+        if(nom != null && email != null && pass != null && nomField.getText().length() >= 8
+        && emailField.getText().length() >= 8 
+        && passChars.length >= 8 &&  validPass ){
 
-
+            
             users.RecupInsert(name, imail, hachoir);
 
 
+            
+                
+                
+            
             LoggIn login = new LoggIn();
                         login.setVisible(true);
 
@@ -88,6 +107,16 @@ public class SignIn extends JFrame {
 
         }else {
 
+            
+                
+            if(!pass.getText().matches(regex)){
+                JOptionPane.showMessageDialog(this,
+            "Probleme d'authentification. Mot de passe invalide \n\n\n" +
+                    "Nom : " + nom + "\nEmail : " + email + "\n pass : " + pass,
+                    "Informations saisies",
+                    JOptionPane.INFORMATION_MESSAGE);
+            }
+
             JOptionPane.showMessageDialog(this,
             "Probleme d'authentification. Minimum 8 characteres \n\n\n" +
                     "Nom : " + nom + "\nEmail : " + email + "\n pass : " + pass,
@@ -99,6 +128,11 @@ public class SignIn extends JFrame {
               //Eviter de garder le pass en clair /2
                 Arrays.fill(passChars, ' ');
         }
+
+
+        
+
+        
         
     });
 
