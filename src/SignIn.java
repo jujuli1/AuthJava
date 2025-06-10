@@ -5,13 +5,16 @@ import org.mindrot.jbcrypt.BCrypt;
 import javax.swing.*;
 import java.util.Arrays;
 
+//page de création de compte 
 
 public class SignIn extends JFrame {
 
+    
     Users users = new Users();
 
     public SignIn() {
 
+        //Visuel
         setTitle("Créer son compte ");
         setSize(350, 300);
         // comportement clic sur croix rouge
@@ -50,7 +53,7 @@ public class SignIn extends JFrame {
         validated.setBounds(100, 150, 150, 30);
         add(validated);
 
-        // convertion du mot de passe haché pour comparaison avec > 8
+        
        
 
         //condition de validation

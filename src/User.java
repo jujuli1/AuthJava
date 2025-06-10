@@ -1,5 +1,6 @@
 public class User {
 
+    // Classe des info utilisateurs
     public String nom;
     public String email;
     public String hachoir;

@@ -5,6 +5,8 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.Scanner;
 
+//page de gestion de la bdd ( terminal )
+
 public class Main {
 
     public static void main(String[] args) {
@@ -14,7 +16,7 @@ public class Main {
 
         while (true) {
 
-            // trykatch menu
+            // trykatch du menu
             try {
 
                 System.out.println(" Connexion réussie à la base de données !");

@@ -8,7 +8,7 @@ public class pageConnectee extends JFrame{
 
     
 
-    
+    //Page de connection reussit 
     public pageConnectee() {
 
         setTitle(" Vous etes connectée");

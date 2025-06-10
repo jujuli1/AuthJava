@@ -6,6 +6,8 @@ import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import org.mindrot.jbcrypt.BCrypt;
 
+//Page de connexion authentification
+
 public class LoggIn extends JFrame {
 
     Users users = new Users();
@@ -54,6 +56,7 @@ public class LoggIn extends JFrame {
         validated.setBounds(100, 150, 150, 30);
         add(validated);
 
+        //ecouteur bouton connexion
         validated.addActionListener(e -> {
             String name = nomField.getText();// prendre le texte du champ du nom
             String imail = emailField.getText();
